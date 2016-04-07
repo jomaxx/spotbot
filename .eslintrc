@@ -1,0 +1,12 @@
+{
+  "extends": "airbnb/base",
+  "rules": {
+    "no-use-before-define": [2, {
+      "functions": false
+    }],
+    "space-before-function-paren": [2, {
+      "anonymous": "always",
+      "named": "never"
+    }]
+  }
+}
