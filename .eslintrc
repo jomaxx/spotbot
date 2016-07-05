@@ -1,5 +1,5 @@
 {
-  "extends": "airbnb/base",
+  "extends": "airbnb-base",
   "rules": {
     "no-use-before-define": [2, {
       "functions": false
