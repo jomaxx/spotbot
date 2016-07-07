@@ -19,7 +19,7 @@ spotifyApi.refreshAccessToken = (refreshAccessToken => {
     spotifyApi.setAccessToken(data.body.access_token);
     setTimeout(
       () => spotifyApi.resetAccessToken(),
-      data.body.expires_in * 1000
+      data.body.expires_in * 1000 * 0.75
     );
   });
 })(spotifyApi.refreshAccessToken.bind(spotifyApi));
