@@ -32,7 +32,8 @@ export function getOrCreateChannelPlaylist(channelId) {
 }
 
 export function addTracksToChannelPlaylist(channelId, trackUris) {
-  return getOrCreateChannelPlaylist(channelId)
+  return spotifyApi.refreshAccessToken()
+    .then(() => getOrCreateChannelPlaylist(channelId))
     .then(playlist => {
       const userId = playlist.owner.id;
       const playlistId = playlist.id;

@@ -12,10 +12,10 @@ spotifyApi.setClientId(SPOTIFY_CLIENT_ID);
 spotifyApi.setClientSecret(SPOTIFY_CLIENT_SECRET);
 spotifyApi.setRefreshToken(SPOTIFY_REFRESH_TOKEN);
 
-spotifyApi.refreshAccessToken = (refreshAccessToken => {
+spotifyApi.refreshAccessToken = (refreshAccessToken => () => {
   if (spotifyApi.getAccessToken()) return Promise.resolve();
 
-  return () => refreshAccessToken().then(data => {
+  return refreshAccessToken().then(data => {
     spotifyApi.setAccessToken(data.body.access_token);
     setTimeout(
       () => spotifyApi.resetAccessToken(),
