@@ -13,7 +13,7 @@ const debugError = _debug('spotbot:error');
 function formatText(text) {
   return text
     .replace(/<([^<>]+)>/g, '$1')
-    .replace(/\b(https?:\/\/open\.spotify\.com\/)([^\s]+)\b/g, (...match) =>
+    .replace(/\b(https?:\/\/open\.spotify\.com\/)([a-zA-Z0-9]+)/g, (...match) =>
       `spotify:${match[2].replace(/\//g, ':')}`
     );
 }
@@ -27,7 +27,7 @@ function wantsPlaylist(text = '') {
 }
 
 function getTrackUris(text = '') {
-  const trackUris = formatText(text).match(/\bspotify:track:[^:\s]+\b/g) || [];
+  const trackUris = formatText(text).match(/\bspotify:track:[a-zA-Z0-9]+/g) || [];
 
   return trackUris
     .filter((trackUri, i) => trackUris.indexOf(trackUri) === i); // unique uris
